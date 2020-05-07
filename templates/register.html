@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}
+Homepage
+{% endblock %}
+{% block body %}
+<div class="container my-auto vertical-center" style="width: 40%; height: auto;">
+    <form method="POST" action="/register">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="username" class="form-control" id="username" aria-describedby="username" name="username">
+            <small id="username" class="form-text text-muted">Your username that will be used to login.</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" name="email">
+            <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="confirm">Password Confirmation</label>
+            <input type="password" class="form-control" id="confirm" name="confirm">
+            <small id="confirm" class="form-text text-muted">Repeat your password</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

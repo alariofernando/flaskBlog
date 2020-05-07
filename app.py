@@ -1,23 +1,19 @@
-from flask import Flask, render_template
-
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 # Configure Application
 app = Flask(__name__)
 
+#Configure database variables
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database/blog.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db = SQLAlchemy(app)
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-@app.route("/")
-def index():
-    '''Will return an index page!'''
-    return render_template("index.html")
+from views import *
 
+if __name__ == "__main__":
 
-@app.route("/login")
-def login():
-    return "Login"
-
-@app.errorhandler(404)
-def notFound(e):
-    '''Will return an error page after this'''
-    return "Four oh four"
+    app.run(debug=True)
